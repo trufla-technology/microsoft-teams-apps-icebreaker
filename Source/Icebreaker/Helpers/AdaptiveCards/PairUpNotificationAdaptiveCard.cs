@@ -47,14 +47,18 @@ namespace Icebreaker.Helpers.AdaptiveCards
             var recipientUpn = !IsGuestUser(recipient) ? recipient.UserPrincipalName : recipient.Email;
 
             var meetingTitle = string.Format(Resources.MeetupTitle, senderGivenName, recipientGivenName);
-            var meetingContent = string.Format(Resources.MeetupContent, botDisplayName);
+            //Old Code
+            //var meetingContent = string.Format(Resources.MeetupContent, botDisplayName);
+            var meetingContent = Resources.MeetupContent; 
             var meetingLink = "https://teams.microsoft.com/l/meeting/new?subject=" + Uri.EscapeDataString(meetingTitle) + "&attendees=" + recipientUpn + "&content=" + Uri.EscapeDataString(meetingContent);
 
             var cardData = new
             {
                 matchUpCardTitleContent = Resources.MatchUpCardTitleContent,
                 matchUpCardMatchedText = string.Format(Resources.MatchUpCardMatchedText, recipient.Name),
-                matchUpCardContentPart1 = string.Format(Resources.MatchUpCardContentPart1, botDisplayName, teamName, recipient.Name),
+                //old code
+                //matchUpCardContentPart1 = string.Format(Resources.MatchUpCardContentPart1, botDisplayName, teamName, recipient.Name),
+                matchUpCardContentPart1 = string.Format(Resources.MatchUpCardContentPart1, recipient.Name),
                 matchUpCardContentPart2 = Resources.MatchUpCardContentPart2,
                 chatWithMatchButtonText = string.Format(Resources.ChatWithMatchButtonText, recipientGivenName),
                 chatWithMessageGreeting = Uri.EscapeDataString(Resources.ChatWithMessageGreeting),
